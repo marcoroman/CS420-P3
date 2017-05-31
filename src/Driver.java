@@ -8,8 +8,11 @@ public class Driver {
         Scanner reader = new Scanner(System.in);
 
         GameBoard b = new GameBoard(true);
+        int i = 0;
 
+        while(i < 10) {
             b.move();
-            b.print();
+            ++i;
+        }
     }
 }

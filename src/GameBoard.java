@@ -5,29 +5,36 @@ import java.util.Scanner;
 
 public class GameBoard {
     private int[][] board = new int[8][8];
-    private boolean userTurn = false;
-    private String move = "";
+    private boolean turn = false;
+    private String move;
     private char[] input = new char[2];
-
-    Scanner reader = new Scanner(System.in);
+    private Scanner reader = new Scanner(System.in);
 
     public GameBoard(boolean b){
-        if(b) userTurn = true;
+        if(b) turn = true;
     }
 
     public void move(){
 
+        move = "";
+
         while(!move.matches("[a-h][1-8]")) {
-            System.out.print("Enter a move: ");
+            System.out.print("\nEnter a move: ");
             move = reader.nextLine();
             move = move.toLowerCase();
         }
 
         input = move.toCharArray();
 
-        if(userTurn){
+        if(turn) {
             board[Character.getNumericValue(input[1]) - 1][((int) input[0]) - 97] = 1;
+            turn = false;
+        }else {
+            board[Character.getNumericValue(input[1]) - 1][((int) input[0]) - 97] = -1;
+            turn = true;
         }
+
+        print();
     }
 
     public void print(){
@@ -48,5 +55,7 @@ public class GameBoard {
                     System.out.print("- ");
             }
         }
+
+        System.out.println();
     }
 }
