@@ -6,13 +6,30 @@ import java.util.Scanner;
 public class Driver {
     public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
+        String input = "";
+        boolean turn = false;
 
-        GameBoard b = new GameBoard(true);
-        int i = 0;
+        while(!input.matches("[y|n]")) {
+            System.out.print("Would you like to go first? [y/n]: ");
+            input = reader.nextLine();
+            input = input.toLowerCase();
 
-        while(i < 10) {
-            b.move();
-            ++i;
+            if(input.equals("y")){
+                turn = true;
+            }else
+                turn = false;
         }
+
+        GameBoard b = new GameBoard();
+
+        while(!b.winner())
+            b.userMove();
+
+        System.out.println("GAME OVER");
+
+        if(b.userWon()){
+            System.out.println("USER WINS!");
+        }else
+            System.out.println("COMPUTER WINS =(");
     }
 }
