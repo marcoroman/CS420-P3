@@ -22,14 +22,22 @@ public class Driver {
 
         GameBoard b = new GameBoard();
 
-        while(!b.winner())
-            b.userMove();
+        //GAME LOOP
+        while(!b.winner()) {
+            if(turn){
+                b.userMove();
+                turn = false;
+            }else {
+                System.out.println("Computer moves");
+                turn = true;
+            }
+        }
 
         System.out.println("GAME OVER");
 
         if(b.userWon()){
             System.out.println("USER WINS!");
         }else
-            System.out.println("COMPUTER WINS =(");
+            System.out.println("COMPUTER WINS...");
     }
 }
