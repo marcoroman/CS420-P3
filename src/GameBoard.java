@@ -7,18 +7,21 @@ import java.util.Scanner;
 public class GameBoard {
     /*board array stores the game state as a series of integer values
     *input char array is used to extract matrix indexes from user input
-    *move String is used to validate user input*/
+    *move String is used to validate user input
+    *userWins indicates whether user won or lost at the conclusion of the game
+    *moveCount counts the total valid moves made; used to check for ties*/
 
     private int[][] board = new int[8][8];
     private char[] input = new char[2];
     private String move = "None";
-    private Scanner reader = new Scanner(System.in);
     private static boolean userWins;
+    private static int moveCount = 0;
+    private Scanner reader = new Scanner(System.in);
 
     public GameBoard(){}
 
     //Allows the user to select a move on the board
-    public void userMove(){
+    public void userMove(int m){
 
         while(true) {
             move = "";
@@ -40,7 +43,8 @@ public class GameBoard {
             int j = Character.getNumericValue(input[1]) - 1;
 
             if(board[i][j] == 0) {
-                board[i][j] = 1;
+                board[i][j] = m;
+                ++moveCount;
                 break;
             }else
                 System.out.println("Not a valid move!");
@@ -108,5 +112,9 @@ public class GameBoard {
 
     public String getLastMove(){
         return move;
+    }
+
+    public boolean tie(){
+        return moveCount == 64;
     }
 }

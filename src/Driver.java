@@ -23,20 +23,24 @@ public class Driver {
         GameBoard b = new GameBoard();
 
         //GAME LOOP
-        while(!b.winner()) {
+        while(!b.winner() && !b.tie()) {
             if(turn){
                 System.out.println("\nMy current move is: " + b.getLastMove());
-                b.userMove();
+                b.userMove(1);
                 turn = false;
             }else {
                 System.out.println("Computer moves");
+                b.userMove(-1);
                 turn = true;
             }
         }
 
-        System.out.println("GAME OVER");
+        System.out.println("\nGAME OVER");
+        b.print();
 
-        if(b.userWon()){
+        if(b.tie()){
+            System.out.println("CAT'S GAME!");
+        }else if(b.userWon()){
             System.out.println("USER WINS!");
         }else
             System.out.println("COMPUTER WINS...");
