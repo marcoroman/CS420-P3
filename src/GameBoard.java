@@ -21,7 +21,7 @@ public class GameBoard {
     public GameBoard(){}
 
     //Allows the user to select a move on the board
-    public void userMove(int m){
+    public void userMove(){
 
         while(true) {
             move = "";
@@ -43,7 +43,7 @@ public class GameBoard {
             int j = Character.getNumericValue(input[1]) - 1;
 
             if(board[i][j] == 0) {
-                board[i][j] = m;
+                board[i][j] = 1;
                 ++moveCount;
                 break;
             }else

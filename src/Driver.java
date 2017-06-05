@@ -26,11 +26,10 @@ public class Driver {
         while(!b.winner() && !b.tie()) {
             if(turn){
                 System.out.println("\nMy current move is: " + b.getLastMove());
-                b.userMove(1);
+                b.userMove();
                 turn = false;
             }else {
                 System.out.println("Computer moves");
-                b.userMove(-1);
                 turn = true;
             }
         }
