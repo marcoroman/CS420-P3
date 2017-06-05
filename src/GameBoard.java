@@ -11,7 +11,7 @@ public class GameBoard {
 
     private int[][] board = new int[8][8];
     private char[] input = new char[2];
-    private String move;
+    private String move = "None";
     private Scanner reader = new Scanner(System.in);
     private static boolean userWins;
 
@@ -23,9 +23,11 @@ public class GameBoard {
         while(true) {
             move = "";
 
+            print();
+
             //Handles validity of move selection
             while (!move.matches("[a-h][1-8]")) {
-                System.out.print("\nEnter a move: ");
+                System.out.print("\nChoose your next move: ");
                 move = reader.nextLine();
                 move = move.toLowerCase();
             }
@@ -43,8 +45,6 @@ public class GameBoard {
             }else
                 System.out.println("Not a valid move!");
         }
-
-        print();
     }
 
     public void print(){
@@ -104,5 +104,9 @@ public class GameBoard {
 
     public boolean userWon(){
         return userWins;
+    }
+
+    public String getLastMove(){
+        return move;
     }
 }

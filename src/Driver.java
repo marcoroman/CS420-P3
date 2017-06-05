@@ -25,6 +25,7 @@ public class Driver {
         //GAME LOOP
         while(!b.winner()) {
             if(turn){
+                System.out.println("\nMy current move is: " + b.getLastMove());
                 b.userMove();
                 turn = false;
             }else {
