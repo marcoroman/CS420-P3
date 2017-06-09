@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Created by marco on 6/8/2017.
  */
 public class Board {
+
     private char[][] board = new char[8][8];
     private ArrayList<Board> children = new ArrayList<>();
     private Board parent;
@@ -19,11 +20,6 @@ public class Board {
             board[i] = b.getBoard()[i].clone();
 
         board[row][col] = 'X';
-    }
-
-    //Allows the user to enter a move on the board
-    public void userMove(int row, int col){
-        board[row][col] = 'O';
     }
 
     public char[][] getBoard(){

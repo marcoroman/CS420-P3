@@ -14,9 +14,6 @@ public class TimerTest {
 
         MyThread task = new MyThread(10);
 
-        //task.start();
-        String test = "asdfs0000adfd";
-
-        System.out.println(test.matches(".*1111.*|.*0000.*"));
+        task.start();
     }
 }

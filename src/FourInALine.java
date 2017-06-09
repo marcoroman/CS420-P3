@@ -81,10 +81,10 @@ public class FourInALine {
             }
 
             if(column.matches(".*OOOO.*")){
-                //userWins = true;
+                userWins = true;
                 return true;
             }else if(column.matches(".*XXXX.*")){
-                //userWins = false;
+                userWins = false;
                 return true;
             }
         }
