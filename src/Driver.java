@@ -20,28 +20,17 @@ public class Driver {
                 turn = false;
         }
 
-        GameBoard b = new GameBoard();
-
-        //GAME LOOP
-        while(!b.winner() && !b.tie()) {
-            if(turn){
-                System.out.println("\nMy current move is: " + b.getLastMove());
-                b.userMove();
-                turn = false;
-            }else {
-                System.out.println("Computer moves");
-                turn = true;
-            }
-        }
+        FourInALine game = new FourInALine(turn);
+        game.play();
 
         System.out.println("\nGAME OVER");
-        b.print();
+        game.print();
 
-        if(b.tie()){
+        if(game.tie()){
             System.out.println("CAT'S GAME!");
-        }else if(b.userWon()){
+        }else if(game.userWon()){
             System.out.println("USER WINS!");
         }else
-            System.out.println("COMPUTER WINS...");
+            System.out.println("COMPUTER WINS.");
     }
 }
