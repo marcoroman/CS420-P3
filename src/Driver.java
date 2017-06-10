@@ -14,10 +14,7 @@ public class Driver {
             input = reader.nextLine();
             input = input.toLowerCase();
 
-            if(input.equals("y")){
-                turn = true;
-            }else
-                turn = false;
+            turn = input.equals("y");
         }
 
         FourInALine game = new FourInALine(turn);
